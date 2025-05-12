@@ -7,15 +7,15 @@ import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 import io.quarkus.security.identity.SecurityIdentity;
-import jakarta.annotation.security.PermitAll;
 import jakarta.inject.Inject;
 
 /**
  * The main view contains a button and a click listener.
  */
 @Route(value = "", layout = MainLayout.class)
-@PermitAll // Allow all authenticated users
+@AnonymousAllowed
 public class MainView extends VerticalLayout {
 
     @Inject
