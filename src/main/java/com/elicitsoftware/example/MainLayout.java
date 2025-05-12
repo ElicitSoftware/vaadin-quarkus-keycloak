@@ -2,7 +2,6 @@ package com.elicitsoftware.example;
 
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
-import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.Scroller;
@@ -59,17 +58,17 @@ public class MainLayout extends AppLayout {
         return sideNav;
     }
 
-    private Button getAuthButton() {
+    private Anchor getAuthButton() {
 
+        Anchor anchor;
         if (accessToken.getName() != null) {
-            return new Button("Logout", VaadinIcon.SIGN_OUT.create(), event -> {
-                event.getSource().getUI().ifPresent(ui -> {
-                    ui.navigate("logout");
-                });
-            });
+            anchor = new Anchor("/logout", "Logout");
+            anchor.getElement().setAttribute("router-ignore", "");
         } else {
-            return new Button("Login", VaadinIcon.SIGN_IN.create());
+            anchor = new Anchor("/login", "Login");
+            anchor.getElement().setAttribute("router-ignore", "");
         }
+        return anchor;
     }
 }
 
