@@ -44,7 +44,7 @@ public class MainLayout extends AppLayout {
         Scroller navScroller = new Scroller(nav);
         navScroller.setClassName(LumoUtility.Padding.SMALL);
         addToDrawer(navScroller);
-        addToDrawer(new Button("logout"));
+        addToDrawer(getAuthButton());
     }
 
     private SideNav getsideNav() {
@@ -58,11 +58,14 @@ public class MainLayout extends AppLayout {
         );
         return sideNav;
     }
-    private Button getLogingButton(){
+
+    private Button getAuthButton() {
 
         if (accessToken.getName() != null) {
             return new Button("Logout", VaadinIcon.SIGN_OUT.create(), event -> {
-                oidcSession.logout();
+                event.getSource().getUI().ifPresent(ui -> {
+                    ui.navigate("logout");
+                });
             });
         } else {
             return new Button("Login", VaadinIcon.SIGN_IN.create());
