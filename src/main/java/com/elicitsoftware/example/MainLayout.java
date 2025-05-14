@@ -16,9 +16,6 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 public class MainLayout extends AppLayout {
 
     @Inject
-    OidcSession oidcSession;
-
-    @Inject
     JsonWebToken accessToken;
 
     public MainLayout() {
