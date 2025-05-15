@@ -1,0 +1,1 @@
+docker exec -it bold_meitner sh -c "/opt/keycloak/bin/kc.sh export --log-level info --file /opt/keycloak/data/import/quarkus-realm-export.json --realm quarkus --users same_file"
